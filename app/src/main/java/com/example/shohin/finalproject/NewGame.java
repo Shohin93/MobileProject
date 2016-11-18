@@ -88,6 +88,7 @@ public class NewGame extends AppCompatActivity {
         for(int i = 1; i <= ROWS; i++) {
             tableRow = (TableRow) tableLayout.getChildAt(i); // get a row
             for(int j = 1; j <= COLS; j++) {
+                // ERROR on textView v
                 Toast.makeText(this, tableRow.getChildCount() + "", Toast.LENGTH_LONG);
                 textView = (TextView) tableRow.getChildAt(j); // get a cell in the row
                 char ROW = (char) i; // get row char
