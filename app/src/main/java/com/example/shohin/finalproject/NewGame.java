@@ -26,7 +26,7 @@ public class NewGame extends AppCompatActivity {
                 textView = new TextView(this);
                 textView.setId(View.generateViewId());
                 textView.setBackground(getResources().getDrawable(R.drawable.border));
-                textView.setText("A");
+                textView.setText("");
                 textView.setGravity(Gravity.CENTER);
                 textView.setHeight(95);
                 textView.setWidth(98);

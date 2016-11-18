@@ -26,7 +26,7 @@
         android:layout_below="@+id/placeShipsText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="67dp"
-        android:layout_marginBottom="100dp"/>
+        android:layout_marginBottom="110dp"/>
 
     <TableLayout
         android:id="@+id/tableLayout"
