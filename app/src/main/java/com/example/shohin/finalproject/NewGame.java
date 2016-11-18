@@ -2,6 +2,7 @@ package com.example.shohin.finalproject;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.inputmethodservice.Keyboard;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -10,6 +11,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -77,7 +79,27 @@ public class NewGame extends AppCompatActivity {
 
     // Fill out the table with initial ships
     private TableLayout populateWithShips(TableLayout tableLayout) {
+        Ship fiveCellShip = new Ship();
+        Ship fourCellShip = new Ship();
+        Ship threeCellShip = new Ship();
+        Ship twoCellShip = new Ship();
+        Ship oneCellShip = new Ship();
 
+        for(int i = 1; i <= ROWS; i++) {
+            tableRow = (TableRow) tableLayout.getChildAt(i); // get a row
+            for(int j = 1; j <= COLS; j++) {
+                Toast.makeText(this, tableRow.getChildCount() + "", Toast.LENGTH_LONG);
+                textView = (TextView) tableRow.getChildAt(j); // get a cell in the row
+                char ROW = (char) i; // get row char
+                int COL = j; // get col int
+                if(COL == 1 && (ROW >= 'F' && ROW <= 'J')) {
+                    tableRow.removeView(textView);
+                    textView.setBackgroundColor(Color.WHITE);
+                    tableRow.addView(textView);
+                }
+            }
+            // tableLayout.addView(tableRow);
+        }
         return tableLayout;
     }
 }

@@ -1,31 +1,31 @@
 package com.example.shohin.finalproject;
 
 public class Coordinate {
-    private int rowCoord;
-    private char colCoord;
+    private char rowCoordinate;
+    private int colCoordinate;
 
-    public Coordinate(int rowCoord, char colCoord) {
-        this.rowCoord = rowCoord;
-        this.colCoord = colCoord;
+    public Coordinate(char rowCoordinate, int colCoordinate) {
+        this.rowCoordinate = rowCoordinate;
+        this.colCoordinate = colCoordinate;
     }
 
-    public int getRowCoord() {
-        return this.rowCoord;
+    public char getRowCoordinate() {
+        return this.rowCoordinate;
     }
 
-    public char getColCoord() {
-        return this.colCoord;
+    public int getColCoordinate() {
+        return this.colCoordinate;
     }
 
-    public void setRowCoord(int rowCoord) {
-        this.rowCoord = rowCoord;
+    public void setRowCoordinate(char rowCoordinate) {
+        this.rowCoordinate = rowCoordinate;
     }
 
-    public void setColCoord(char colCoord) {
-        this.colCoord = colCoord;
+    public void setColCoordinate(int colCoordinate) {
+        this.colCoordinate = colCoordinate;
     }
 
     public String toString() {
-        return "[" + this.rowCoord + ", " + this.colCoord + "]";
+        return "[" + this.rowCoordinate + ", " + this.colCoordinate + "]";
     }
 }
