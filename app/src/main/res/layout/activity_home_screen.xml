@@ -29,7 +29,8 @@
         android:id="@+id/newGame"
         android:layout_below="@+id/previousGame"
         android:layout_centerHorizontal="true"
-        android:textSize="16dp" />
+        android:textSize="16dp"
+        android:onClick="newGame"/>
 
     <Button
         android:layout_width="wrap_content"

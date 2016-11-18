@@ -1,8 +1,10 @@
 package com.example.shohin.finalproject;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -31,5 +33,10 @@ public class HomeScreen extends AppCompatActivity {
         newGame.setTypeface(customFont);
         settings.setTypeface(customFont);
         exitGame.setTypeface(customFont);
+    }
+
+    public void newGame(View view) {
+        Intent intent = new Intent(this, NewGame.class);
+        startActivity(intent);
     }
 }
