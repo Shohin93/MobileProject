@@ -14,6 +14,9 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class NewGame extends AppCompatActivity {
+    private static final int ROWS = 11;
+    private static final int COLS = 11;
+
     TableLayout tableLayout;
     TableRow tableRow;
     TextView textView, placeShipsText;
@@ -39,9 +42,9 @@ public class NewGame extends AppCompatActivity {
 
     private TableLayout fillTableLayout(TableLayout tableLayout) {
         Typeface customFont = Typeface.createFromAsset(getAssets(), "fonts/Top Secret.ttf");
-        for(int i = 1; i <= 11; i++) {
+        for(int i = 1; i <= ROWS; i++) {
             tableRow = new TableRow(this);
-            for(int j = 1; j <= 11; j++) {
+            for(int j = 1; j <= COLS; j++) {
                 textView = new TextView(this);
                 textView.setId(View.generateViewId());
                 textView.setBackground(getResources().getDrawable(R.drawable.border));
