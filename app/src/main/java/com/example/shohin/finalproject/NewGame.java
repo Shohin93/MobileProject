@@ -14,23 +14,31 @@ public class NewGame extends AppCompatActivity {
     TableRow tableRow;
     TextView textView;
 
+    char asciiChar = 65;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_game);
 
         tableLayout = (TableLayout) findViewById(R.id.tableLayout);
-        for(int i = 0; i < 10; i++) {
+        for(int i = 1; i <= 11; i++) {
             tableRow = new TableRow(this);
-            for(int j = 0; j < 10; j++) {
+            for(int j = 1; j <= 11; j++) {
                 textView = new TextView(this);
                 textView.setId(View.generateViewId());
                 textView.setBackground(getResources().getDrawable(R.drawable.border));
-                textView.setText("");
+                if(i == 1 && j != 1) {
+                    textView.setText(Integer.toString(j - 1));
+                }
+                if(i != 1 && j == 1) {
+                    textView.setText(Character.toString(asciiChar++));
+                }
                 textView.setGravity(Gravity.CENTER);
-                textView.setHeight(95);
-                textView.setWidth(98);
+                textView.setHeight(85);
+                textView.setWidth(89);
                 tableRow.addView(textView);
+
             }
             tableLayout.addView(tableRow, new TableLayout.LayoutParams
                     (TableLayout.LayoutParams.WRAP_CONTENT,
