@@ -34,6 +34,11 @@ public class NewGame extends AppCompatActivity {
         placeShipsText.setTypeface(customFont);
 
         tableLayout = (TableLayout) findViewById(R.id.tableLayout);
+        tableLayout = fillTableLayout(tableLayout);
+    }
+
+    private TableLayout fillTableLayout(TableLayout tableLayout) {
+        Typeface customFont = Typeface.createFromAsset(getAssets(), "fonts/Top Secret.ttf");
         for(int i = 1; i <= 11; i++) {
             tableRow = new TableRow(this);
             for(int j = 1; j <= 11; j++) {
@@ -60,5 +65,6 @@ public class NewGame extends AppCompatActivity {
                     (TableLayout.LayoutParams.WRAP_CONTENT,
                             TableLayout.LayoutParams.WRAP_CONTENT));
         }
+        return tableLayout;
     }
 }
