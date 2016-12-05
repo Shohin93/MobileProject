@@ -22,7 +22,7 @@ public class Ship {
         HORIZONTAL, VERTICAL
     }
 
-    // A hashtable that maps shiptype to coordinate
+    // A hashmap that maps a ship to coordinate
     public static HashMap<ShipType, Coordinate> mappedShips =
             new HashMap<>();
 

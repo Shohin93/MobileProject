@@ -64,8 +64,8 @@ public class BattleField extends View {
         return true;
     }
 
-    public BattleField(Context context, AttributeSet attrs) {
-        super(context, attrs);
+    public BattleField(Context context, AttributeSet attributes) {
+        super(context, attributes);
         this.context = context;
         paint = new Paint();
         paint.setColor(Color.WHITE);
@@ -73,13 +73,13 @@ public class BattleField extends View {
     }
 
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    protected void onSizeChanged(int w, int h, int oldWidth, int oldHeight) {
         this.border = new Rect(PADDING, PADDING, w - PADDING, w - PADDING);
         this.cellSize = (float) (border.width() / 10.0);
         initialShipPosition();
         resetShips();
-        super.onSizeChanged(w, h, oldw, oldh);
-    };
+        super.onSizeChanged(w, h, oldWidth, oldWidth);
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
