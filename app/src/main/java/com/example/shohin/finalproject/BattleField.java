@@ -136,13 +136,39 @@ public class BattleField extends View {
                                             aiBoard[row++][col] == false &&
                                             aiBoard[row++][col] == false &&
                                             aiBoard[row++][col] == false) {
-                                        
+
                                         aiBoard[row++][col] = true;
                                         aiBoard[row++][col] = true;
                                         aiBoard[row++][col] = true;
                                         aiBoard[row++][col] = true;
                                         aiBoard[row][col] = true;
 
+                                        ship.setCoordinates(row, col, row+5, col);
+                                        flag1 = false;
+                                    }
+                                }
+                            }
+                        }
+
+                        else {
+                            for (int row = rowPos; row < ROWS; row++) {
+                                for (int col = colPos; col < COLS; col++) {
+                                    if (aiBoard[row][col] == false &&
+                                            row + 5 < ROWS && row - 5 > ROWS &&
+                                            col + 5 < COLS && col - 5 > COLS &&
+                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col++] == false) {
+
+                                        aiBoard[row][col++] = true;
+                                        aiBoard[row][col++] = true;
+                                        aiBoard[row][col++] = true;
+                                        aiBoard[row][col++] = true;
+                                        aiBoard[row][col] = true;
+
+                                        ship.setCoordinates(row, col, row, col+5);
                                         flag1 = false;
                                     }
                                 }
@@ -171,6 +197,30 @@ public class BattleField extends View {
                                         aiBoard[row++][col] = true;
                                         aiBoard[row][col] = true;
 
+                                        ship.setCoordinates(row, col, row+4, col);
+                                        flag2 = false;
+                                    }
+                                }
+                            }
+                        }
+
+                        else {
+                            for (int row = rowPos; row < ROWS; row++) {
+                                for (int col = colPos; col < COLS; col++) {
+                                    if (aiBoard[row][col] == false &&
+                                            row + 4 < ROWS && row - 4 > ROWS &&
+                                            col + 4 < COLS && col - 4 > COLS &&
+                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col++] == false ) {
+
+                                        aiBoard[row][col++] = true;
+                                        aiBoard[row][col++] = true;
+                                        aiBoard[row][col++] = true;
+                                        aiBoard[row][col] = true;
+
+                                        ship.setCoordinates(row, col, row, col+4);
                                         flag2 = false;
                                     }
                                 }
@@ -197,6 +247,28 @@ public class BattleField extends View {
                                         aiBoard[row++][col] = true;
                                         aiBoard[row][col] = true;
 
+                                        ship.setCoordinates(row, col, row+3, col);
+                                        flag3 = false;
+                                    }
+                                }
+                            }
+                        }
+
+                        else {
+                            for (int row = rowPos; row < ROWS; row++) {
+                                for (int col = colPos; col < COLS; col++) {
+                                    if (aiBoard[row][col] == false &&
+                                            row + 3 < ROWS && row - 3 > ROWS &&
+                                            col + 3 < COLS && col - 3 > COLS &&
+                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col++] == false) {
+
+                                        aiBoard[row][col++] = true;
+                                        aiBoard[row][col++] = true;
+                                        aiBoard[row][col] = true;
+
+                                        ship.setCoordinates(row, col, row, col+3);
                                         flag3 = false;
                                     }
                                 }
@@ -221,6 +293,26 @@ public class BattleField extends View {
                                         aiBoard[row++][col] = true;
                                         aiBoard[row][col] = true;
 
+                                        ship.setCoordinates(row, col, row+2, col);
+                                        flag4 = false;
+                                    }
+                                }
+                            }
+                        }
+
+                        else {
+                            for (int row = rowPos; row < ROWS; row++) {
+                                for (int col = colPos; col < COLS; col++) {
+                                    if (aiBoard[row][col] == false &&
+                                            row + 2 < ROWS && row - 2 > ROWS &&
+                                            col + 2 < COLS && col - 2 > COLS &&
+                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col++] == false) {
+
+                                        aiBoard[row][col++] = true;
+                                        aiBoard[row][col] = true;
+
+                                        ship.setCoordinates(row, col, row, col+2);
                                         flag4 = false;
                                     }
                                 }
