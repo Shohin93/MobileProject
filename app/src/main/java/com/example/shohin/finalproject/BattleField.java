@@ -131,10 +131,10 @@ public class BattleField extends View {
     // Set initial positions for ships on the board
     private void initialShipPosition() {
         SHIP_INITIAL_YPOS = 2;
-        FIVECELLSHIP_INITIAL_XPOS = (PADDING);
-        FOURCELLSHIP_INITIAL_XPOS = (int) (PADDING + cellSize * 2);
-        THREECELLSHIP_INITIAL_XPOS = (int) (PADDING + cellSize * 4);
-        TWOCELLSHIP_INITIAL_XPOS = (int) (PADDING + cellSize * 6);
+        FIVECELLSHIP_INITIAL_XPOS = (PADDING) + 1;
+        FOURCELLSHIP_INITIAL_XPOS = (int) (PADDING + cellSize * 2) + 1;
+        THREECELLSHIP_INITIAL_XPOS = (int) (PADDING + cellSize * 4) + 1;
+        TWOCELLSHIP_INITIAL_XPOS = (int) (PADDING + cellSize * 6) + 1;
     }
 
     public float getCellSize() {
