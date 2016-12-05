@@ -108,7 +108,7 @@ public class Ship {
     }
 
     public void setCoordinates(int x1, int y1, int x2, int y2) {
-        this.coordinates = new Coordinate(x1, y1, x2, y2);
+        this.coordinates.setCoords(x1, y1, x2, y2);
     }
 
     public ShipType getShipType() {
