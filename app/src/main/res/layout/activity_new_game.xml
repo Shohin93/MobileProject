@@ -13,11 +13,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Place your ships!"
+        android:text="Place your ships and boms!"
         android:id="@+id/placeShipsText"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="30dp" />
+        android:textSize="30dp"
+        android:textAlignment="center" />
 
     <Button
         android:layout_width="wrap_content"
