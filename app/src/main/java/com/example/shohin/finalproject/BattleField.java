@@ -128,10 +128,9 @@ public class BattleField extends View {
                         if (ship.isShipHorizontal()) {
                             for (int row = rowPos; row < ROWS; row++) {
                                 for (int col = colPos; col < COLS; col++) {
-                                    if (aiBoard[row][col] == false &&
-                                            row + 5 < ROWS && row - 5 > ROWS &&
+                                    if (row + 5 < ROWS && row - 5 > ROWS &&
                                             col + 5 < COLS && col - 5 > COLS &&
-                                            aiBoard[row++][col] == false &&
+                                            aiBoard[row][col] == false &&
                                             aiBoard[row++][col] == false &&
                                             aiBoard[row++][col] == false &&
                                             aiBoard[row++][col] == false &&
@@ -153,10 +152,9 @@ public class BattleField extends View {
                         else {
                             for (int row = rowPos; row < ROWS; row++) {
                                 for (int col = colPos; col < COLS; col++) {
-                                    if (aiBoard[row][col] == false &&
-                                            row + 5 < ROWS && row - 5 > ROWS &&
+                                    if (row + 5 < ROWS && row - 5 > ROWS &&
                                             col + 5 < COLS && col - 5 > COLS &&
-                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col] == false &&
                                             aiBoard[row][col++] == false &&
                                             aiBoard[row][col++] == false &&
                                             aiBoard[row][col++] == false &&
@@ -184,10 +182,9 @@ public class BattleField extends View {
                         if (ship.isShipHorizontal()) {
                             for (int row = rowPos; row < ROWS; row++) {
                                 for (int col = colPos; col < COLS; col++) {
-                                    if (aiBoard[row][col] == false &&
-                                            row + 4 < ROWS && row - 4 > ROWS &&
+                                    if (row + 4 < ROWS && row - 4 > ROWS &&
                                             col + 4 < COLS && col - 4 > COLS &&
-                                            aiBoard[row++][col] == false &&
+                                            aiBoard[row][col] == false &&
                                             aiBoard[row++][col] == false &&
                                             aiBoard[row++][col] == false &&
                                             aiBoard[row++][col] == false) {
@@ -207,10 +204,9 @@ public class BattleField extends View {
                         else {
                             for (int row = rowPos; row < ROWS; row++) {
                                 for (int col = colPos; col < COLS; col++) {
-                                    if (aiBoard[row][col] == false &&
-                                            row + 4 < ROWS && row - 4 > ROWS &&
+                                    if (row + 4 < ROWS && row - 4 > ROWS &&
                                             col + 4 < COLS && col - 4 > COLS &&
-                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col] == false &&
                                             aiBoard[row][col++] == false &&
                                             aiBoard[row][col++] == false &&
                                             aiBoard[row][col++] == false ) {
@@ -236,10 +232,9 @@ public class BattleField extends View {
                         if (ship.isShipHorizontal()) {
                             for (int row = rowPos; row < ROWS; row++) {
                                 for (int col = colPos; col < COLS; col++) {
-                                    if (aiBoard[row][col] == false &&
-                                            row + 3 < ROWS && row - 3 > ROWS &&
+                                    if (row + 3 < ROWS && row - 3 > ROWS &&
                                             col + 3 < COLS && col - 3 > COLS &&
-                                            aiBoard[row++][col] == false &&
+                                            aiBoard[row][col] == false &&
                                             aiBoard[row++][col] == false &&
                                             aiBoard[row++][col] == false) {
 
@@ -257,10 +252,9 @@ public class BattleField extends View {
                         else {
                             for (int row = rowPos; row < ROWS; row++) {
                                 for (int col = colPos; col < COLS; col++) {
-                                    if (aiBoard[row][col] == false &&
-                                            row + 3 < ROWS && row - 3 > ROWS &&
+                                    if (row + 3 < ROWS && row - 3 > ROWS &&
                                             col + 3 < COLS && col - 3 > COLS &&
-                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col] == false &&
                                             aiBoard[row][col++] == false &&
                                             aiBoard[row][col++] == false) {
 
@@ -284,10 +278,9 @@ public class BattleField extends View {
                         if (ship.isShipHorizontal()) {
                             for (int row = rowPos; row < ROWS; row++) {
                                 for (int col = colPos; col < COLS; col++) {
-                                    if (aiBoard[row][col] == false &&
-                                            row + 2 < ROWS && row - 2 > ROWS &&
+                                    if (row + 2 < ROWS && row - 2 > ROWS &&
                                             col + 2 < COLS && col - 2 > COLS &&
-                                            aiBoard[row++][col] == false &&
+                                            aiBoard[row][col] == false &&
                                             aiBoard[row++][col] == false) {
 
                                         aiBoard[row++][col] = true;
@@ -303,10 +296,9 @@ public class BattleField extends View {
                         else {
                             for (int row = rowPos; row < ROWS; row++) {
                                 for (int col = colPos; col < COLS; col++) {
-                                    if (aiBoard[row][col] == false &&
-                                            row + 2 < ROWS && row - 2 > ROWS &&
+                                    if (row + 2 < ROWS && row - 2 > ROWS &&
                                             col + 2 < COLS && col - 2 > COLS &&
-                                            aiBoard[row][col++] == false &&
+                                            aiBoard[row][col] == false &&
                                             aiBoard[row][col++] == false) {
 
                                         aiBoard[row][col++] = true;
