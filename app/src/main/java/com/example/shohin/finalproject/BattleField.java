@@ -92,10 +92,10 @@ public class BattleField extends View {
     }
 
     private void resetShips() {
-        fiveCellShip = new Ship(context, this, ShipType.FiveCellShip);
-        fourCellShip = new Ship(context, this, ShipType.FourCellShip);
-        threeCellShip = new Ship(context, this, ShipType.ThreeCellShip);
-        twoCellShip = new Ship(context, this, ShipType.TwoCellShip);
+        fiveCellShip = new Ship(context, this, Ship.ShipType.FiveCellShip);
+        fourCellShip = new Ship(context, this, Ship.ShipType.FourCellShip);
+        threeCellShip = new Ship(context, this, Ship.ShipType.ThreeCellShip);
+        twoCellShip = new Ship(context, this, Ship.ShipType.TwoCellShip);
         ships[0] = fiveCellShip;
         ships[1] = fourCellShip;
         ships[2] = threeCellShip;

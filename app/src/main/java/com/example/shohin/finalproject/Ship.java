@@ -9,18 +9,28 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.Matrix;
 import android.widget.Toast;
 
+import java.util.HashMap;
+
 public class Ship {
+
+    public enum ShipType {
+        FiveCellShip, FourCellShip,
+        ThreeCellShip, TwoCellShip;
+    }
 
     public enum Orientation {
         HORIZONTAL, VERTICAL
     }
+
+    // A hashtable that maps shiptype to coordinate
+    public static HashMap<ShipType, Coordinate> mappedShips =
+            new HashMap<>();
 
     private int x;
     private int y;
     private int size;
     private boolean placedHorizontal;
     private ShipType shipType;
-    private Coordinate shipCoordinate;
     private Orientation orientation;
     private BitmapDrawable bm_horizontal;
     private BitmapDrawable bm_vertical;
@@ -34,25 +44,30 @@ public class Ship {
         this.cellSize = board.getCellSize();
         this.paint = new Paint();
         this.placedHorizontal = false;
+        this.y = BattleField.SHIP_INITIAL_YPOS;
+
         switch (type) {
             case FiveCellShip:
                 size = 5;
                 x = BattleField.FIVECELLSHIP_INITIAL_XPOS;
+                mappedShips.put(type, new Coordinate(x, y, x, y + size));
                 break;
             case FourCellShip:
                 size = 4;
                 x = BattleField.FOURCELLSHIP_INITIAL_XPOS;
+                mappedShips.put(type, new Coordinate(x, y, x, y + size));
                 break;
             case ThreeCellShip:
                 size = 3;
                 x = BattleField.THREECELLSHIP_INITIAL_XPOS;
+                mappedShips.put(type, new Coordinate(x, y, x, y + size));
                 break;
             case TwoCellShip:
                 size = 2;
                 x = BattleField.TWOCELLSHIP_INITIAL_XPOS;
+                mappedShips.put(type, new Coordinate(x, y, x, y + size));
                 break;
         }
-        this.y = BattleField.SHIP_INITIAL_YPOS;
         this.orientation = Orientation.VERTICAL;
         this.bm_horizontal = shipBitmap(shipType);
         this.bm_horizontal = attachBitmapToBoard(bm_horizontal);
