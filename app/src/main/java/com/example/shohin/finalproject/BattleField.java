@@ -12,6 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class BattleField extends View {
@@ -27,6 +28,8 @@ public class BattleField extends View {
     public static int THREECELLSHIP_INITIAL_XPOS;
     public static int TWOCELLSHIP_INITIAL_XPOS;
 
+    private static boolean[][] aiBoard;
+
     private ArrayList<Ship> aiShips;
     private Ship ships[] = new Ship[4];
     private Ship fiveCellShip;
@@ -40,7 +43,7 @@ public class BattleField extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        switch(event.getAction()) {
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 for (Ship ship : ships) {
                     if (ship.containsPoint((int) event.getX(), (int) event.getY())) {
@@ -51,8 +54,8 @@ public class BattleField extends View {
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (movingShip != null) {
-                    movingShip.setX((int)(event.getX() - movingShip.getWidth() / 2));
-                    movingShip.setY((int)(event.getY() - movingShip.getHeight() / 2));
+                    movingShip.setX((int) (event.getX() - movingShip.getWidth() / 2));
+                    movingShip.setY((int) (event.getY() - movingShip.getHeight() / 2));
 //                    Ship.ShipType obj = Ship.ShipType.FiveCellShip;
 //                    BitmapDrawable bm = movingShip.shipBitmap(obj);
 //                    movingShip.rotateBitmap(bm);
@@ -108,20 +111,104 @@ public class BattleField extends View {
         ships[3] = twoCellShip;
 
         // Initialize AI's ships and their coordinates
+        this.aiBoard = new boolean[ROWS][COLS];
         this.aiShips = new ArrayList<>();
         this.aiShips.add(fiveCellShip);
         this.aiShips.add(fourCellShip);
         this.aiShips.add(threeCellShip);
         this.aiShips.add(twoCellShip);
-        for(Ship ship: aiShips) {
-            switch(ship.getShipType()) {
+        for (Ship ship : aiShips) {
+            Random r = new Random();
+            switch (ship.getShipType()) {
                 case FiveCellShip:
+                    boolean flag1 = true;
+                    while (flag1) {
+                        int rowPos = r.nextInt(10) + 1;
+                        int colPos = r.nextInt(10) + 1;
+                        if (ship.isShipHorizontal()) {
+                            for (int row = rowPos; row < ROWS; row++) {
+                                for (int col = colPos; col < COLS; col++) {
+                                    if (aiBoard[row][col] == false &&
+                                            row + 5 < ROWS && row - 5 > ROWS &&
+                                            col + 5 < COLS && col - 5 > COLS) {
+                                        aiBoard[row++][col] = true;
+                                        aiBoard[row++][col] = true;
+                                        aiBoard[row++][col] = true;
+                                        aiBoard[row++][col] = true;
+                                        aiBoard[row][col] = true;
+
+                                        flag1 = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
                     break;
                 case FourCellShip:
+                    boolean flag2 = true;
+                    while (flag2) {
+                        int rowPos = r.nextInt(10) + 1;
+                        int colPos = r.nextInt(10) + 1;
+                        if (ship.isShipHorizontal()) {
+                            for (int row = rowPos; row < ROWS; row++) {
+                                for (int col = colPos; col < COLS; col++) {
+                                    if (aiBoard[row][col] == false &&
+                                            row + 4 < ROWS && row - 4 > ROWS &&
+                                            col + 4 < COLS && col - 4 > COLS) {
+                                        aiBoard[row++][col] = true;
+                                        aiBoard[row++][col] = true;
+                                        aiBoard[row++][col] = true;
+                                        aiBoard[row][col] = true;
+
+                                        flag2 = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
                     break;
                 case ThreeCellShip:
+                    boolean flag3 = true;
+                    while (flag3) {
+                        int rowPos = r.nextInt(10) + 1;
+                        int colPos = r.nextInt(10) + 1;
+                        if (ship.isShipHorizontal()) {
+                            for (int row = rowPos; row < ROWS; row++) {
+                                for (int col = colPos; col < COLS; col++) {
+                                    if (aiBoard[row][col] == false &&
+                                            row + 3 < ROWS && row - 3 > ROWS &&
+                                            col + 3 < COLS && col - 3 > COLS) {
+                                        aiBoard[row++][col] = true;
+                                        aiBoard[row++][col] = true;
+                                        aiBoard[row][col] = true;
+
+                                        flag3 = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
                     break;
                 case TwoCellShip:
+                    boolean flag4 = true;
+                    while (flag4) {
+                        int rowPos = r.nextInt(10) + 1;
+                        int colPos = r.nextInt(10) + 1;
+                        if (ship.isShipHorizontal()) {
+                            for (int row = rowPos; row < ROWS; row++) {
+                                for (int col = colPos; col < COLS; col++) {
+                                    if (aiBoard[row][col] == false &&
+                                            row + 3 < ROWS && row - 3 > ROWS &&
+                                            col + 3 < COLS && col - 3 > COLS) {
+                                        aiBoard[row++][col] = true;
+                                        aiBoard[row][col] = true;
+
+                                        flag4 = false;
+                                    }
+                                }
+                            }
+                        }
+                    }
                     break;
             }
         }
