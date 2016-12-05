@@ -13,7 +13,7 @@ public class Ship {
 
     public enum ShipType {
         FiveCellShip, FourCellShip,
-        ThreeCellShip, TwoCellShip;
+        ThreeCellShip, TwoCellShip
     }
 
     public enum Orientation {
@@ -105,6 +105,10 @@ public class Ship {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public void setCoordinates(int x1, int y1, int x2, int y2) {
+        this.coordinates = new Coordinate(x1, y1, x2, y2);
     }
 
     public ShipType getShipType() {
