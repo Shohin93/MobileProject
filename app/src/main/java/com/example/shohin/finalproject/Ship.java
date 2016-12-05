@@ -20,6 +20,7 @@ public class Ship {
     private int size;
     private boolean placedHorizontal;
     private ShipType shipType;
+    private Coordinate shipCoordinate;
     private Orientation orientation;
     private BitmapDrawable bm_horizontal;
     private BitmapDrawable bm_vertical;
@@ -27,10 +28,10 @@ public class Ship {
     private Paint paint;
     private Context context;
 
-    public Ship(Context context, BattleField grid, ShipType type) {
+    public Ship(Context context, BattleField board, ShipType type) {
         this.context = context;
         this.shipType = type;
-        this.cellSize = grid.getCellSize();
+        this.cellSize = board.getCellSize();
         this.paint = new Paint();
         this.placedHorizontal = false;
         switch (type) {
@@ -54,7 +55,7 @@ public class Ship {
         this.y = BattleField.SHIP_INITIAL_YPOS;
         this.orientation = Orientation.VERTICAL;
         this.bm_horizontal = shipBitmap(shipType);
-        this.bm_horizontal = attachBitmapToGrid(bm_horizontal);
+        this.bm_horizontal = attachBitmapToBoard(bm_horizontal);
         this.bm_vertical = rotateBitmap(bm_horizontal);
     }
 
@@ -69,8 +70,8 @@ public class Ship {
                 y > this.y && y < this.y + getHeight());
     }
 
-    // When dragging/moving a ship around, the method attaches it to grid when touch is released
-    public void attachToGrid() {
+    // When dragging/moving a ship around, the method attaches it to board when touch is released
+    public void attachToBoard() {
         this.x = (int)(((x / (int)cellSize) * cellSize));
         this.y = (int)(((y / (int)cellSize) * cellSize));
 
@@ -91,10 +92,14 @@ public class Ship {
     public void setX(int x) {
         this.x = x;
     }
+
     public void setY(int y) {
         this.y = y;
     }
 
+    public void setShipPosition(boolean changedPos) {
+        this.placedHorizontal = changedPos;
+    }
 
     private BitmapDrawable shipBitmap(ShipType type) {
         switch(type) {
@@ -115,7 +120,7 @@ public class Ship {
         return new BitmapDrawable(rotatedBitmap);
     }
 
-    private BitmapDrawable attachBitmapToGrid(BitmapDrawable bitmap) {
+    private BitmapDrawable attachBitmapToBoard(BitmapDrawable bitmap) {
         Bitmap originalBitmap = bitmap.getBitmap();
         Matrix matrix = new Matrix();
         int height = originalBitmap.getHeight();

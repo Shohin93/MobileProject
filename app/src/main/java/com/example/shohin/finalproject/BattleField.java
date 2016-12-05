@@ -55,7 +55,7 @@ public class BattleField extends View {
                 break;
             case MotionEvent.ACTION_UP:
                 if (movingShip != null) {
-                    movingShip.attachToGrid();
+                    movingShip.attachToBoard();
                     movingShip = null;
                     invalidate();
                 }
@@ -125,6 +125,7 @@ public class BattleField extends View {
         }
     }
 
+    // Set initial positions for ships on the board
     private void initialShipPosition() {
         SHIP_INITIAL_YPOS = 2;
         FIVECELLSHIP_INITIAL_XPOS = (PADDING);
