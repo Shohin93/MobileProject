@@ -25,4 +25,13 @@ public class AI {
     public void decrementNumberOfBombs() {
         this.numberOfBombs--;
     }
+
+    // Mainly for testing purposes
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for(Coordinate c: aiCoordinates) {
+            sb.append(c.toString() + "\n");
+        }
+        return sb.toString();
+    }
 }
