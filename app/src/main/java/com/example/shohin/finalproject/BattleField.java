@@ -8,7 +8,6 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -40,9 +39,9 @@ public class BattleField extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch(event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                for (int i = 0; i < ships.length; i++) {
-                    if (ships[i].containsPoint((int)event.getX(), (int)event.getY())) {
-                        movingShip = ships[i];
+                for (Ship ship : ships) {
+                    if (ship.containsPoint((int) event.getX(), (int) event.getY())) {
+                        movingShip = ship;
                         break;
                     }
                 }
@@ -51,6 +50,9 @@ public class BattleField extends View {
                 if (movingShip != null) {
                     movingShip.setX((int)(event.getX() - movingShip.getWidth() / 2));
                     movingShip.setY((int)(event.getY() - movingShip.getHeight() / 2));
+//                    Ship.ShipType obj = Ship.ShipType.FiveCellShip;
+//                    BitmapDrawable bm = movingShip.shipBitmap(obj);
+//                    movingShip.rotateBitmap(bm);
                 }
                 invalidate();
                 break;

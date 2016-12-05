@@ -33,15 +33,15 @@ public class Ship {
     private Paint paint;
     private Context context;
 
-    public Ship(Context context, BattleField board, ShipType type) {
+    public Ship(Context context, BattleField board, ShipType shipType) {
         this.context = context;
-        this.shipType = type;
+        this.shipType = shipType;
         this.cellSize = board.getCellSize();
         this.paint = new Paint();
         this.placedHorizontal = false;
         this.y = BattleField.SHIP_INITIAL_YPOS;
 
-        switch (type) {
+        switch (shipType) {
             case FiveCellShip:
                 size = 5;
                 x = BattleField.FIVECELLSHIP_INITIAL_XPOS;
@@ -111,7 +111,11 @@ public class Ship {
         this.placedHorizontal = changedPos;
     }
 
-    private BitmapDrawable shipBitmap(ShipType type) {
+    public boolean isShipHorizontal() {
+        return this.placedHorizontal;
+    }
+
+    public BitmapDrawable shipBitmap(ShipType type) {
         switch(type) {
             case TwoCellShip:
             default:
@@ -120,7 +124,7 @@ public class Ship {
         }
     }
 
-    private BitmapDrawable rotateBitmap(BitmapDrawable bitmap) {
+    public BitmapDrawable rotateBitmap(BitmapDrawable bitmap) {
         Matrix matrix = new Matrix();
         Bitmap originalBitmap = bitmap.getBitmap();
         int width = originalBitmap.getWidth();
