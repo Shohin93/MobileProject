@@ -11,6 +11,8 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.ArrayList;
+
 
 public class BattleField extends View {
 
@@ -25,6 +27,7 @@ public class BattleField extends View {
     public static int THREECELLSHIP_INITIAL_XPOS;
     public static int TWOCELLSHIP_INITIAL_XPOS;
 
+    private ArrayList<Ship> aiShips;
     private Ship ships[] = new Ship[4];
     private Ship fiveCellShip;
     private Ship fourCellShip;
@@ -103,6 +106,25 @@ public class BattleField extends View {
         ships[1] = fourCellShip;
         ships[2] = threeCellShip;
         ships[3] = twoCellShip;
+
+        // Initialize AI's ships and their coordinates
+        this.aiShips = new ArrayList<>();
+        this.aiShips.add(fiveCellShip);
+        this.aiShips.add(fourCellShip);
+        this.aiShips.add(threeCellShip);
+        this.aiShips.add(twoCellShip);
+        for(Ship ship: aiShips) {
+            switch(ship.getShipType()) {
+                case FiveCellShip:
+                    break;
+                case FourCellShip:
+                    break;
+                case ThreeCellShip:
+                    break;
+                case TwoCellShip:
+                    break;
+            }
+        }
     }
 
     private void drawGridLines(Canvas canvas) {

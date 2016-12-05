@@ -107,6 +107,10 @@ public class Ship {
         this.y = y;
     }
 
+    public ShipType getShipType() {
+        return this.shipType;
+    }
+
     public void setShipPosition(boolean changedPos) {
         this.placedHorizontal = changedPos;
     }
