@@ -1,31 +1,41 @@
 package com.example.shohin.finalproject;
 
 public class Coordinate {
-    private char rowCoordinate;
-    private int colCoordinate;
+    private int x1, y1,
+                x2, y2;
 
-    public Coordinate(char rowCoordinate, int colCoordinate) {
-        this.rowCoordinate = rowCoordinate;
-        this.colCoordinate = colCoordinate;
+    public Coordinate(int x1Coord, int y1Coord, int x2Coord, int y2Coord) {
+        this.x1 = x1Coord;
+        this.y1 = y1Coord;
+        this.x2 = x2Coord;
+        this.y2 = y2Coord;
     }
 
-    public char getRowCoordinate() {
-        return this.rowCoordinate;
+    public int getX1() {
+        return this.x1;
     }
 
-    public int getColCoordinate() {
-        return this.colCoordinate;
+    public int getY1() {
+        return this.y1;
     }
 
-    public void setRowCoordinate(char rowCoordinate) {
-        this.rowCoordinate = rowCoordinate;
+    public int getX2() {
+        return this.x2;
     }
 
-    public void setColCoordinate(int colCoordinate) {
-        this.colCoordinate = colCoordinate;
+    public int getY2() {
+        return this.y2;
+    }
+
+    public void setCoords(int x1, int y1, int x2, int y2) {
+        this.x1 = x1;
+        this.y1 = y1;
+        this.x2 = x2;
+        this.y2 = y2;
     }
 
     public String toString() {
-        return "[" + this.rowCoordinate + ", " + this.colCoordinate + "]";
+        return "[(" + this.x1 + ", " + this.y1 + "); " +
+                "(" + this.x2 + ", " + this.y2 + "]";
     }
 }

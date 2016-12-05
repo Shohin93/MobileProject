@@ -27,17 +27,13 @@
         android:layout_below="@+id/placeShipsText"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="67dp"
-        android:layout_marginBottom="110dp"
+        android:layout_marginBottom="90dp"
         android:textSize="20dp" />
 
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_gravity="center_horizontal"
-        android:layout_below="@+id/startBattle"
+    <com.example.shohin.finalproject.BattleField
+        android:id="@+id/grid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
-    </TableLayout>
+        android:layout_below="@+id/startBattle" />
 
 </RelativeLayout>

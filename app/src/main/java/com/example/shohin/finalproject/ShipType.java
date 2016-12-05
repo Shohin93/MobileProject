@@ -2,12 +2,11 @@ package com.example.shohin.finalproject;
 
 public enum ShipType {
     FiveCellShip(5), FourCellShip(4),
-    ThreeCellShip(3), TwoCellShip(2),
-    OneCellShip(1);
+    ThreeCellShip(3), TwoCellShip(2);
 
     private int shipSize;
 
-    private ShipType(int shipSize) {
+    ShipType(int shipSize) {
         this.shipSize = shipSize;
     }
 
