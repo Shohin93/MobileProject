@@ -41,6 +41,8 @@ public class BattleField extends View {
     private Paint paint;
     private Rect border;
 
+    private boolean temp = false;
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getAction()) {
@@ -56,9 +58,6 @@ public class BattleField extends View {
                 if (movingShip != null) {
                     movingShip.setX((int) (event.getX() - movingShip.getWidth() / 2));
                     movingShip.setY((int) (event.getY() - movingShip.getHeight() / 2));
-//                    Ship.ShipType obj = Ship.ShipType.FiveCellShip;
-//                    BitmapDrawable bm = movingShip.shipBitmap(obj);
-//                    movingShip.rotateBitmap(bm);
                 }
                 invalidate();
                 break;
@@ -68,6 +67,9 @@ public class BattleField extends View {
                     movingShip = null;
                     invalidate();
                 }
+                break;
+            default:
+                temp = true;
                 break;
         }
         return true;
@@ -98,6 +100,11 @@ public class BattleField extends View {
         for (Ship ship : ships) {
             ship.draw(canvas);
         }
+        if(temp) {
+            Paint paintCircle = new Paint();
+            paintCircle.setStyle(Paint.Style.FILL);
+            canvas.drawCircle(60, 138, 30, paintCircle);
+        }
     }
 
     private void resetShips() {
@@ -111,209 +118,209 @@ public class BattleField extends View {
         ships[3] = twoCellShip;
 
         // Initialize AI's ships and their coordinates
-        this.aiBoard = new boolean[ROWS][COLS];
-        this.aiShips = new ArrayList<>();
-        this.aiShips.add(fiveCellShip);
-        this.aiShips.add(fourCellShip);
-        this.aiShips.add(threeCellShip);
-        this.aiShips.add(twoCellShip);
-        for (Ship ship : aiShips) {
-            Random r = new Random();
-            switch (ship.getShipType()) {
-                case FiveCellShip:
-                    boolean flag1 = true;
-                    while (flag1) {
-                        int rowPos = r.nextInt(10) + 1;
-                        int colPos = r.nextInt(10) + 1;
-                        if (ship.isShipHorizontal()) {
-                            for (int row = rowPos; row < ROWS; row++) {
-                                for (int col = colPos; col < COLS; col++) {
-                                    if (row + 5 < ROWS && row - 5 > ROWS &&
-                                            col + 5 < COLS && col - 5 > COLS &&
-                                            aiBoard[row][col] == false &&
-                                            aiBoard[row++][col] == false &&
-                                            aiBoard[row++][col] == false &&
-                                            aiBoard[row++][col] == false &&
-                                            aiBoard[row++][col] == false) {
-
-                                        aiBoard[row++][col] = true;
-                                        aiBoard[row++][col] = true;
-                                        aiBoard[row++][col] = true;
-                                        aiBoard[row++][col] = true;
-                                        aiBoard[row][col] = true;
-
-                                        ship.setCoordinates(row, col, row+5, col);
-                                        flag1 = false;
-                                    }
-                                }
-                            }
-                        }
-
-                        else {
-                            for (int row = rowPos; row < ROWS; row++) {
-                                for (int col = colPos; col < COLS; col++) {
-                                    if (row + 5 < ROWS && row - 5 > ROWS &&
-                                            col + 5 < COLS && col - 5 > COLS &&
-                                            aiBoard[row][col] == false &&
-                                            aiBoard[row][col++] == false &&
-                                            aiBoard[row][col++] == false &&
-                                            aiBoard[row][col++] == false &&
-                                            aiBoard[row][col++] == false) {
-
-                                        aiBoard[row][col++] = true;
-                                        aiBoard[row][col++] = true;
-                                        aiBoard[row][col++] = true;
-                                        aiBoard[row][col++] = true;
-                                        aiBoard[row][col] = true;
-
-                                        ship.setCoordinates(row, col, row, col+5);
-                                        flag1 = false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case FourCellShip:
-                    boolean flag2 = true;
-                    while (flag2) {
-                        int rowPos = r.nextInt(10) + 1;
-                        int colPos = r.nextInt(10) + 1;
-                        if (ship.isShipHorizontal()) {
-                            for (int row = rowPos; row < ROWS; row++) {
-                                for (int col = colPos; col < COLS; col++) {
-                                    if (row + 4 < ROWS && row - 4 > ROWS &&
-                                            col + 4 < COLS && col - 4 > COLS &&
-                                            aiBoard[row][col] == false &&
-                                            aiBoard[row++][col] == false &&
-                                            aiBoard[row++][col] == false &&
-                                            aiBoard[row++][col] == false) {
-
-                                        aiBoard[row++][col] = true;
-                                        aiBoard[row++][col] = true;
-                                        aiBoard[row++][col] = true;
-                                        aiBoard[row][col] = true;
-
-                                        ship.setCoordinates(row, col, row+4, col);
-                                        flag2 = false;
-                                    }
-                                }
-                            }
-                        }
-
-                        else {
-                            for (int row = rowPos; row < ROWS; row++) {
-                                for (int col = colPos; col < COLS; col++) {
-                                    if (row + 4 < ROWS && row - 4 > ROWS &&
-                                            col + 4 < COLS && col - 4 > COLS &&
-                                            aiBoard[row][col] == false &&
-                                            aiBoard[row][col++] == false &&
-                                            aiBoard[row][col++] == false &&
-                                            aiBoard[row][col++] == false ) {
-
-                                        aiBoard[row][col++] = true;
-                                        aiBoard[row][col++] = true;
-                                        aiBoard[row][col++] = true;
-                                        aiBoard[row][col] = true;
-
-                                        ship.setCoordinates(row, col, row, col+4);
-                                        flag2 = false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case ThreeCellShip:
-                    boolean flag3 = true;
-                    while (flag3) {
-                        int rowPos = r.nextInt(10) + 1;
-                        int colPos = r.nextInt(10) + 1;
-                        if (ship.isShipHorizontal()) {
-                            for (int row = rowPos; row < ROWS; row++) {
-                                for (int col = colPos; col < COLS; col++) {
-                                    if (row + 3 < ROWS && row - 3 > ROWS &&
-                                            col + 3 < COLS && col - 3 > COLS &&
-                                            aiBoard[row][col] == false &&
-                                            aiBoard[row++][col] == false &&
-                                            aiBoard[row++][col] == false) {
-
-                                        aiBoard[row++][col] = true;
-                                        aiBoard[row++][col] = true;
-                                        aiBoard[row][col] = true;
-
-                                        ship.setCoordinates(row, col, row+3, col);
-                                        flag3 = false;
-                                    }
-                                }
-                            }
-                        }
-
-                        else {
-                            for (int row = rowPos; row < ROWS; row++) {
-                                for (int col = colPos; col < COLS; col++) {
-                                    if (row + 3 < ROWS && row - 3 > ROWS &&
-                                            col + 3 < COLS && col - 3 > COLS &&
-                                            aiBoard[row][col] == false &&
-                                            aiBoard[row][col++] == false &&
-                                            aiBoard[row][col++] == false) {
-
-                                        aiBoard[row][col++] = true;
-                                        aiBoard[row][col++] = true;
-                                        aiBoard[row][col] = true;
-
-                                        ship.setCoordinates(row, col, row, col+3);
-                                        flag3 = false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-                case TwoCellShip:
-                    boolean flag4 = true;
-                    while (flag4) {
-                        int rowPos = r.nextInt(10) + 1;
-                        int colPos = r.nextInt(10) + 1;
-                        if (ship.isShipHorizontal()) {
-                            for (int row = rowPos; row < ROWS; row++) {
-                                for (int col = colPos; col < COLS; col++) {
-                                    if (row + 2 < ROWS && row - 2 > ROWS &&
-                                            col + 2 < COLS && col - 2 > COLS &&
-                                            aiBoard[row][col] == false &&
-                                            aiBoard[row++][col] == false) {
-
-                                        aiBoard[row++][col] = true;
-                                        aiBoard[row][col] = true;
-
-                                        ship.setCoordinates(row, col, row+2, col);
-                                        flag4 = false;
-                                    }
-                                }
-                            }
-                        }
-
-                        else {
-                            for (int row = rowPos; row < ROWS; row++) {
-                                for (int col = colPos; col < COLS; col++) {
-                                    if (row + 2 < ROWS && row - 2 > ROWS &&
-                                            col + 2 < COLS && col - 2 > COLS &&
-                                            aiBoard[row][col] == false &&
-                                            aiBoard[row][col++] == false) {
-
-                                        aiBoard[row][col++] = true;
-                                        aiBoard[row][col] = true;
-
-                                        ship.setCoordinates(row, col, row, col+2);
-                                        flag4 = false;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    break;
-            }
-        }
+//        this.aiBoard = new boolean[ROWS][COLS];
+//        this.aiShips = new ArrayList<>();
+//        this.aiShips.add(fiveCellShip);
+//        this.aiShips.add(fourCellShip);
+//        this.aiShips.add(threeCellShip);
+//        this.aiShips.add(twoCellShip);
+//        for (Ship ship : aiShips) {
+//            Random r = new Random();
+//            switch (ship.getShipType()) {
+//                case FiveCellShip:
+//                    boolean flag1 = true;
+//                    while (flag1) {
+//                        int rowPos = r.nextInt(10) + 1;
+//                        int colPos = r.nextInt(10) + 1;
+//                        if (ship.isShipHorizontal()) {
+//                            for (int row = rowPos; row < ROWS; row++) {
+//                                for (int col = colPos; col < COLS; col++) {
+//                                    if (row + 5 < ROWS && row - 5 > ROWS &&
+//                                            col + 5 < COLS && col - 5 > COLS &&
+//                                            aiBoard[row][col] == false &&
+//                                            aiBoard[row++][col] == false &&
+//                                            aiBoard[row++][col] == false &&
+//                                            aiBoard[row++][col] == false &&
+//                                            aiBoard[row++][col] == false) {
+//
+//                                        aiBoard[row++][col] = true;
+//                                        aiBoard[row++][col] = true;
+//                                        aiBoard[row++][col] = true;
+//                                        aiBoard[row++][col] = true;
+//                                        aiBoard[row][col] = true;
+//
+//                                        ship.setCoordinates(row, col, row+5, col);
+//                                        flag1 = false;
+//                                    }
+//                                }
+//                            }
+//                        }
+//
+//                        else {
+//                            for (int row = rowPos; row < ROWS; row++) {
+//                                for (int col = colPos; col < COLS; col++) {
+//                                    if (row + 5 < ROWS && row - 5 > ROWS &&
+//                                            col + 5 < COLS && col - 5 > COLS &&
+//                                            aiBoard[row][col] == false &&
+//                                            aiBoard[row][col++] == false &&
+//                                            aiBoard[row][col++] == false &&
+//                                            aiBoard[row][col++] == false &&
+//                                            aiBoard[row][col++] == false) {
+//
+//                                        aiBoard[row][col++] = true;
+//                                        aiBoard[row][col++] = true;
+//                                        aiBoard[row][col++] = true;
+//                                        aiBoard[row][col++] = true;
+//                                        aiBoard[row][col] = true;
+//
+//                                        ship.setCoordinates(row, col, row, col+5);
+//                                        flag1 = false;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                    break;
+//                case FourCellShip:
+//                    boolean flag2 = true;
+//                    while (flag2) {
+//                        int rowPos = r.nextInt(10) + 1;
+//                        int colPos = r.nextInt(10) + 1;
+//                        if (ship.isShipHorizontal()) {
+//                            for (int row = rowPos; row < ROWS; row++) {
+//                                for (int col = colPos; col < COLS; col++) {
+//                                    if (row + 4 < ROWS && row - 4 > ROWS &&
+//                                            col + 4 < COLS && col - 4 > COLS &&
+//                                            aiBoard[row][col] == false &&
+//                                            aiBoard[row++][col] == false &&
+//                                            aiBoard[row++][col] == false &&
+//                                            aiBoard[row++][col] == false) {
+//
+//                                        aiBoard[row++][col] = true;
+//                                        aiBoard[row++][col] = true;
+//                                        aiBoard[row++][col] = true;
+//                                        aiBoard[row][col] = true;
+//
+//                                        ship.setCoordinates(row, col, row+4, col);
+//                                        flag2 = false;
+//                                    }
+//                                }
+//                            }
+//                        }
+//
+//                        else {
+//                            for (int row = rowPos; row < ROWS; row++) {
+//                                for (int col = colPos; col < COLS; col++) {
+//                                    if (row + 4 < ROWS && row - 4 > ROWS &&
+//                                            col + 4 < COLS && col - 4 > COLS &&
+//                                            aiBoard[row][col] == false &&
+//                                            aiBoard[row][col++] == false &&
+//                                            aiBoard[row][col++] == false &&
+//                                            aiBoard[row][col++] == false ) {
+//
+//                                        aiBoard[row][col++] = true;
+//                                        aiBoard[row][col++] = true;
+//                                        aiBoard[row][col++] = true;
+//                                        aiBoard[row][col] = true;
+//
+//                                        ship.setCoordinates(row, col, row, col+4);
+//                                        flag2 = false;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                    break;
+//                case ThreeCellShip:
+//                    boolean flag3 = true;
+//                    while (flag3) {
+//                        int rowPos = r.nextInt(10) + 1;
+//                        int colPos = r.nextInt(10) + 1;
+//                        if (ship.isShipHorizontal()) {
+//                            for (int row = rowPos; row < ROWS; row++) {
+//                                for (int col = colPos; col < COLS; col++) {
+//                                    if (row + 3 < ROWS && row - 3 > ROWS &&
+//                                            col + 3 < COLS && col - 3 > COLS &&
+//                                            aiBoard[row][col] == false &&
+//                                            aiBoard[row++][col] == false &&
+//                                            aiBoard[row++][col] == false) {
+//
+//                                        aiBoard[row++][col] = true;
+//                                        aiBoard[row++][col] = true;
+//                                        aiBoard[row][col] = true;
+//
+//                                        ship.setCoordinates(row, col, row+3, col);
+//                                        flag3 = false;
+//                                    }
+//                                }
+//                            }
+//                        }
+//
+//                        else {
+//                            for (int row = rowPos; row < ROWS; row++) {
+//                                for (int col = colPos; col < COLS; col++) {
+//                                    if (row + 3 < ROWS && row - 3 > ROWS &&
+//                                            col + 3 < COLS && col - 3 > COLS &&
+//                                            aiBoard[row][col] == false &&
+//                                            aiBoard[row][col++] == false &&
+//                                            aiBoard[row][col++] == false) {
+//
+//                                        aiBoard[row][col++] = true;
+//                                        aiBoard[row][col++] = true;
+//                                        aiBoard[row][col] = true;
+//
+//                                        ship.setCoordinates(row, col, row, col+3);
+//                                        flag3 = false;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                    break;
+//                case TwoCellShip:
+//                    boolean flag4 = true;
+//                    while (flag4) {
+//                        int rowPos = r.nextInt(10) + 1;
+//                        int colPos = r.nextInt(10) + 1;
+//                        if (ship.isShipHorizontal()) {
+//                            for (int row = rowPos; row < ROWS; row++) {
+//                                for (int col = colPos; col < COLS; col++) {
+//                                    if (row + 2 < ROWS && row - 2 > ROWS &&
+//                                            col + 2 < COLS && col - 2 > COLS &&
+//                                            aiBoard[row][col] == false &&
+//                                            aiBoard[row++][col] == false) {
+//
+//                                        aiBoard[row++][col] = true;
+//                                        aiBoard[row][col] = true;
+//
+//                                        ship.setCoordinates(row, col, row+2, col);
+//                                        flag4 = false;
+//                                    }
+//                                }
+//                            }
+//                        }
+//
+//                        else {
+//                            for (int row = rowPos; row < ROWS; row++) {
+//                                for (int col = colPos; col < COLS; col++) {
+//                                    if (row + 2 < ROWS && row - 2 > ROWS &&
+//                                            col + 2 < COLS && col - 2 > COLS &&
+//                                            aiBoard[row][col] == false &&
+//                                            aiBoard[row][col++] == false) {
+//
+//                                        aiBoard[row][col++] = true;
+//                                        aiBoard[row][col] = true;
+//
+//                                        ship.setCoordinates(row, col, row, col+2);
+//                                        flag4 = false;
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                    break;
+//            }
+//        }
     }
 
     private void drawGridLines(Canvas canvas) {
