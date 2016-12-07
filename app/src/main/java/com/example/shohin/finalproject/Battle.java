@@ -16,9 +16,10 @@ public class Battle extends AppCompatActivity {
 
     private static final int ROWS = 10;
     private static final int COLS = 10;
+
     TableRow tableRow;
     TableLayout tableLayout;
-    TextView battleTitle, myHits,aiHits;
+    TextView battleTitle, myHits, aiHits;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,6 @@ public class Battle extends AppCompatActivity {
         tableLayout = (TableLayout) findViewById(R.id.tableLayout);
         for (int row = 0; row < ROWS; row++) {
             tableRow = new TableRow(this);
-            tableRow.setClickable(true);
             for (int col = 0; col < COLS; col++) {
                 final TextView textView = new TextView(this);
                 textView.setId(View.generateViewId());
