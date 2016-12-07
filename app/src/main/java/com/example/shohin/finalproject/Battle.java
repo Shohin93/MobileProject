@@ -17,7 +17,6 @@ public class Battle extends AppCompatActivity {
     private static final int ROWS = 10;
     private static final int COLS = 10;
     TableRow tableRow;
-    TextView textView;
     TableLayout tableLayout;
     TextView battleTitle, myHits,aiHits;
 
@@ -39,11 +38,10 @@ public class Battle extends AppCompatActivity {
             tableRow = new TableRow(this);
             tableRow.setClickable(true);
             for (int col = 0; col < COLS; col++) {
-                textView = new TextView(this);
+                final TextView textView = new TextView(this);
                 textView.setId(View.generateViewId());
                 textView.setBackground(getResources().getDrawable(R.drawable.border));
-                textView.setTypeface(customFont);
-                textView.setTextSize(20);
+                textView.setTextSize(30);
                 textView.setGravity(Gravity.CENTER);
                 textView.setHeight(95);
                 textView.setWidth(98);
@@ -56,6 +54,7 @@ public class Battle extends AppCompatActivity {
                     public void onClick(View v) {
                         Toast.makeText(Battle.this, "Clicked", Toast.LENGTH_LONG);
                         System.out.println("Cell clicked: " + textView.getId());
+                        textView.setText("X");
                     }
                 });
             }
