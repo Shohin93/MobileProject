@@ -1,10 +1,13 @@
 package com.example.shohin.finalproject;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class NewGame extends AppCompatActivity {
 
@@ -22,5 +25,11 @@ public class NewGame extends AppCompatActivity {
         startBattle.setTypeface(customFont);
         placeShipsText = (TextView) findViewById(R.id.placeShipsText);
         placeShipsText.setTypeface(customFont);
+    }
+
+    // Start battle on click
+    public void startBattle(View view) {
+        Intent intent = new Intent(this, Battle.class);
+        startActivity(intent);
     }
 }
