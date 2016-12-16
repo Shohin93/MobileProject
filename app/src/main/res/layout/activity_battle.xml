@@ -70,9 +70,20 @@
         android:layout_centerHorizontal="true"
         android:clickable="true"
         android:id="@+id/tableLayout"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:layout_marginRight="0dp"
         android:layout_marginBottom="0dp">
     </TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/placeBomb"
+        android:layout_below="@+id/aiHitsText"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

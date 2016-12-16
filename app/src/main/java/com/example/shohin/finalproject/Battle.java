@@ -1,5 +1,6 @@
 package com.example.shohin.finalproject;
 
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,6 +16,8 @@ import java.util.Arrays;
 
 public class Battle extends AppCompatActivity {
 
+    private TextView placeBombText;
+
     private static final int ROWS = 10;
     private static final int COLS = 10;
     private static char[][] userBoard = new char[10][10];
@@ -29,6 +32,7 @@ public class Battle extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
+
         init();
         addAIShips();
         print();
@@ -39,6 +43,11 @@ public class Battle extends AppCompatActivity {
         battleTitle = (TextView) findViewById(R.id.battleTitle);
         myHits = (TextView) findViewById(R.id.myHitsText);
         aiHits = (TextView) findViewById(R.id.aiHitsText);
+        placeBombText = (TextView) findViewById(R.id.placeBomb);
+        placeBombText.setTypeface(customFont);
+        placeBombText.setTextColor(Color.WHITE);
+        placeBombText.setTextSize(30);
+        placeBombText.setText("Place your bomb!");
         battleTitle.setTypeface(customFont);
         myHits.setTypeface(customFont);
         aiHits.setTypeface(customFont);
