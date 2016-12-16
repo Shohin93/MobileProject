@@ -55,6 +55,8 @@ public class Battle extends AppCompatActivity {
                         Toast.makeText(Battle.this, "Clicked", Toast.LENGTH_LONG);
                         System.out.println("Cell clicked: " + textView.getId());
                         textView.setText("X");
+
+                        Toast.makeText(Battle.this, "FiveCellShip position is " + BattleField.ships[0].coordinates.toString(), Toast.LENGTH_LONG).show();
                     }
                 });
             }

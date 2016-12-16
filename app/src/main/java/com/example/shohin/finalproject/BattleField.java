@@ -1,17 +1,13 @@
 package com.example.shohin.finalproject;
 
 import android.content.Context;
-import android.content.res.AssetManager;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
-import java.util.ArrayList;
 
 public class BattleField extends View {
 
@@ -26,10 +22,8 @@ public class BattleField extends View {
     public static int THREECELLSHIP_INITIAL_XPOS;
     public static int TWOCELLSHIP_INITIAL_XPOS;
 
-    private static boolean[][] aiBoard;
+    public static Ship ships[] = new Ship[4];
 
-    private ArrayList<Ship> aiShips;
-    private Ship ships[] = new Ship[4];
     private Ship fiveCellShip;
     private Ship fourCellShip;
     private Ship threeCellShip;
@@ -325,18 +319,6 @@ public class BattleField extends View {
         for (int col = 1; col < COLS; col++) {
             canvas.drawLine(PADDING + cellSize * col, PADDING,
                     PADDING + cellSize * col, PADDING + border.height(), paint);
-//            if(col == 1) {
-//                Paint text = new Paint();
-//                text.setColor(Color.WHITE);
-//                text.setTextAlign(Paint.Align.CENTER);
-//                AssetManager am = getResources().getAssets();
-//                Typeface customFont = Typeface.createFromAsset(am, "fonts/Top Secret.ttf");
-//                text.setTypeface(customFont);
-//                text.setTextSize(65);
-//                int xPos = (canvas.getWidth() / 2);
-//                int yPos = (int) ((canvas.getHeight() / 2) - ((text.descent() + text.ascent()) / 2)) ;
-//                canvas.drawText("1", 55, 70, text);
-//            }
         }
         for (int row = 1; row < ROWS; row++) {
             canvas.drawLine(PADDING, PADDING + cellSize * row,

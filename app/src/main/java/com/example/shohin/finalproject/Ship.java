@@ -25,7 +25,7 @@ public class Ship {
     private int size;
     private boolean placedHorizontal;
     private ShipType shipType;
-    private Coordinate coordinates;
+    public Coordinate coordinates;
     private Orientation orientation;
     private BitmapDrawable bm_horizontal;
     private BitmapDrawable bm_vertical;
@@ -85,8 +85,27 @@ public class Ship {
         this.x = (int)(((x / (int)cellSize) * cellSize));
         this.y = (int)(((y / (int)cellSize) * cellSize));
 
+        // Only for vertically positioned ships for now
+        // -----NEEDS TO BE CHANGED TO HANDLE HORIZONTAL POSITIONING AS WELL
+        int shipsX = (int)(Math.ceil(y / cellSize) + 1);
+        int shipsY = (int)(Math.ceil(x / cellSize) + 1);
+        switch(this.shipType) {
+            case FiveCellShip:
+                this.coordinates.setCoords(shipsX, shipsY, shipsX + 5, shipsY);
+                break;
+            case FourCellShip:
+                this.coordinates.setCoords(shipsX, shipsY, shipsX + 4, shipsY);
+                break;
+            case ThreeCellShip:
+                this.coordinates.setCoords(shipsX, shipsY, shipsX + 3, shipsY);
+                break;
+            case TwoCellShip:
+                this.coordinates.setCoords(shipsX, shipsY, shipsX + 2, shipsY);
+                break;
+        }
         // For testing purposes
-        Toast.makeText(context, "(x,y) = " + (int)(Math.ceil(x/cellSize) + 1) + "," + (int)(Math.ceil(y/cellSize) + 1) + "", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "(x,y) = " + (int)(Math.ceil(y / cellSize) + 1) + "," + (int)(Math.ceil(x / cellSize) + 1) + "", Toast.LENGTH_SHORT).show();
+        Toast.makeText(context, "(x1,y1,x2,y2) = " + this.coordinates.toString(), Toast.LENGTH_LONG).show();
     }
 
     public int getWidth() {
