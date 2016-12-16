@@ -17,8 +17,9 @@ public class Battle extends AppCompatActivity {
 
     private static final int ROWS = 10;
     private static final int COLS = 10;
+    private static char[][] userBoard = new char[10][10];
     private static char[][] aiBoard = new char[10][10];
-    private static int[] ships = {2, 3, 4, 5};
+    private static int[] aiShips = {2, 3, 4, 5};
 
     TableRow tableRow;
     TableLayout tableLayout;
@@ -29,8 +30,9 @@ public class Battle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_battle);
         init();
-        addShips();
+        addAIShips();
         print();
+        addUserShips();
         Log.d("this is my array", "arr: " + Arrays.toString(aiBoard));
 
         Typeface customFont = Typeface.createFromAsset(getAssets(), "fonts/Top Secret.ttf");
@@ -77,12 +79,13 @@ public class Battle extends AppCompatActivity {
         for(int i = 0; i < aiBoard.length; i++) {
             for(int j = 0; j < aiBoard[0].length; j++) {
                 aiBoard[i][j] = 'O';
+                userBoard[i][j] = 'O';
             }
         }
     }
 
-    private static void addShips() {
-        for(int ship: ships) {
+    private static void addAIShips() {
+        for(int ship: aiShips) {
             System.out.println("Adding ship " + ship);
             boolean added = false;
             while(!added) {
@@ -135,6 +138,13 @@ public class Battle extends AppCompatActivity {
             }
         }
     }
+
+    private static void addUserShips() {
+//        for(Ship ship: BattleField.ships) {
+//            if(!ship.isShipHorizontal())
+//        }
+    }
+
     private static void print() {
         for(int i = 0; i < aiBoard.length; i++) {
             for(int j = 0; j < aiBoard[0].length; j++) {

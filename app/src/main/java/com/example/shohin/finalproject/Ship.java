@@ -33,6 +33,10 @@ public class Ship {
     private Paint paint;
     private Context context;
 
+    public Ship(Coordinate coordinates) {
+        this.coordinates = coordinates;
+    }
+
     public Ship(Context context, BattleField board, ShipType shipType) {
         this.context = context;
         this.shipType = shipType;
