@@ -119,6 +119,7 @@ public class Battle extends AppCompatActivity {
                             intent = new Intent(Battle.this, GameOver.class);
                             intent.putExtra(MESSAGE, "Congrats!\nYou have defeated your opponent!");
                             startActivity(intent);
+                            finish();
                         }
 
                         int x = random.nextInt(9);
@@ -141,6 +142,7 @@ public class Battle extends AppCompatActivity {
                                 intent = new Intent(Battle.this, GameOver.class);
                                 intent.putExtra(MESSAGE, "You have been defeated!");
                                 startActivity(intent);
+                                finish();
                             }
                         } else {
                             System.out.println("AI MISSED");

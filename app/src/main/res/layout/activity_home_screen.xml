@@ -27,6 +27,7 @@
         android:text="Exit game"
         android:id="@+id/exitGame"
         android:textSize="30dp"
+        android:onClick="exitGame"
         android:layout_below="@+id/newGame"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />

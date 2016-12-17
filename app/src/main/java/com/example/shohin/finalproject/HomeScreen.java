@@ -34,5 +34,10 @@ public class HomeScreen extends AppCompatActivity {
     public void newGame(View view) {
         Intent intent = new Intent(this, NewGame.class);
         startActivity(intent);
+        finish();
+    }
+
+    public void exitGame(View view) {
+        System.exit(0);
     }
 }

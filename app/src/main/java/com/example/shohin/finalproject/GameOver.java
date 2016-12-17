@@ -42,7 +42,8 @@ public class GameOver extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void exitGame(View view) {
+    public void exit(View view) {
+        finish();
         System.exit(0);
     }
 }

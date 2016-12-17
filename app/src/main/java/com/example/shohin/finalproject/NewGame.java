@@ -31,5 +31,6 @@ public class NewGame extends AppCompatActivity {
     public void startBattle(View view) {
         Intent intent = new Intent(this, Battle.class);
         startActivity(intent);
+        finish();
     }
 }

@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:text="Exit"
         android:id="@+id/exit"
-        android:onClick="exitGame"
+        android:onClick="exit"
         android:layout_alignTop="@+id/mainMenu"
         android:layout_marginTop="64dp"
         android:layout_alignParentEnd="true"
