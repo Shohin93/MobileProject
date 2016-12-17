@@ -166,14 +166,12 @@ public class Battle extends AppCompatActivity {
 
     private static void addAIShips() {
         for(int ship: aiShips) {
-            System.out.println("Adding ship " + ship);
             boolean added = false;
             while(!added) {
                 int x = (int)(aiBoard.length * Math.random());
                 int y = (int)(aiBoard[0].length * Math.random());
                 boolean vertical = ((int)(10 * Math.random())) % 2 == 0;
                 if(vertical) {
-                    // Check for vertical space
                     boolean hasSpace = true;
                     for(int i = 0; i < ship; i++) {
                         if(y + i >= aiBoard[0].length) {
@@ -186,7 +184,6 @@ public class Battle extends AppCompatActivity {
                         }
                     }
                     if(!hasSpace) {
-                        // No room there, check again
                         continue;
                     }
                     for(int i = 0; i < ship; i++) {
@@ -194,7 +191,6 @@ public class Battle extends AppCompatActivity {
                     }
                     added = true;
                 } else {
-                    // Check for horizontal space
                     boolean hasSpace = true;
                     for(int i = 0; i < ship; i++) {
                         if(x + i >= aiBoard.length) {
@@ -207,7 +203,6 @@ public class Battle extends AppCompatActivity {
                         }
                     }
                     if(!hasSpace) {
-                        // No room there, check again
                         continue;
                     }
                     for(int i = 0; i < ship; i++) {
@@ -237,7 +232,10 @@ public class Battle extends AppCompatActivity {
 
             // If the ship is placed horizontally
             else {
-                // NEEDS IMPLEMENTATION!!!!!!!!
+                while(y1 < y2) {
+                    userBoard[x1][y1] = 'X';
+                    y1++;
+                }
             }
         }
     }

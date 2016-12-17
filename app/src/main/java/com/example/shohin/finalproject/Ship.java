@@ -20,22 +20,20 @@ public class Ship {
         HORIZONTAL, VERTICAL
     }
 
+    public Coordinate coordinates;
+
     private int x;
     private int y;
     private int size;
+    private float cellSize;
     private boolean placedHorizontal;
     private ShipType shipType;
-    public Coordinate coordinates;
+
     private Orientation orientation;
     private BitmapDrawable bm_horizontal;
     private BitmapDrawable bm_vertical;
-    private float cellSize;
     private Paint paint;
     private Context context;
-
-    public Ship(Coordinate coordinates) {
-        this.coordinates = coordinates;
-    }
 
     public Ship(Context context, BattleField board, ShipType shipType) {
         this.context = context;
@@ -74,7 +72,7 @@ public class Ship {
     }
 
     public void draw(Canvas canvas) {
-        BitmapDrawable bitmap = (BitmapDrawable) valueByOrientation(bm_horizontal, bm_vertical);
+        BitmapDrawable bitmap = (BitmapDrawable) orientation(bm_horizontal, bm_vertical);
         canvas.drawBitmap(bitmap.getBitmap(), x, y, paint);
     }
 
@@ -89,10 +87,9 @@ public class Ship {
         this.x = (int)(((x / (int)cellSize) * cellSize));
         this.y = (int)(((y / (int)cellSize) * cellSize));
 
-        // Only for vertically positioned ships for now
-        // -----NEEDS TO BE CHANGED TO HANDLE HORIZONTAL POSITIONING AS WELL
         int shipsX = (int)(Math.ceil(y / cellSize) + 1);
         int shipsY = (int)(Math.ceil(x / cellSize) + 1);
+
         switch(this.shipType) {
             case FiveCellShip:
                 this.coordinates.setCoords(shipsX, shipsY, shipsX + 5, shipsY);
@@ -107,19 +104,55 @@ public class Ship {
                 this.coordinates.setCoords(shipsX, shipsY, shipsX + 2, shipsY);
                 break;
         }
-        // For testing purposes
-        Toast.makeText(context, "(x,y) = " + (int)(Math.ceil(y / cellSize) + 1) + "," + (int)(Math.ceil(x / cellSize) + 1) + "", Toast.LENGTH_SHORT).show();
-        Toast.makeText(context, "(x1,y1,x2,y2) = " + this.coordinates.toString(), Toast.LENGTH_LONG).show();
     }
 
     public int getWidth() {
-        return ((BitmapDrawable)valueByOrientation(bm_horizontal, bm_vertical))
+        return ((BitmapDrawable) orientation(bm_horizontal, bm_vertical))
                 .getBitmap().getWidth();
     }
 
     public int getHeight() {
-        return ((BitmapDrawable)valueByOrientation(bm_horizontal, bm_vertical))
+        return ((BitmapDrawable) orientation(bm_horizontal, bm_vertical))
                 .getBitmap().getHeight();
+    }
+
+    private Object orientation(Object horizontal, Object vertical) {
+        if(orientation == Orientation.HORIZONTAL) {
+            return horizontal;
+        } else {
+            return vertical;
+        }
+    }
+
+    public BitmapDrawable shipBitmap(ShipType type) {
+        switch(type) {
+            case TwoCellShip:
+            default:
+                return new BitmapDrawable(
+                        BitmapFactory.decodeResource(context.getResources(), R.drawable.ship));
+        }
+    }
+
+    public BitmapDrawable rotateBitmap(BitmapDrawable bitmap) {
+        Matrix matrix = new Matrix();
+        matrix.postRotate(90);
+        Bitmap bm = bitmap.getBitmap();
+        int width = bm.getWidth();
+        int height = bm.getHeight();
+        Bitmap rotatedBm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
+        return new BitmapDrawable(rotatedBm);
+    }
+
+    private BitmapDrawable attachBitmapToBoard(BitmapDrawable bitmap) {
+        Bitmap bm = bitmap.getBitmap();
+        Matrix matrix = new Matrix();
+        int height = bm.getHeight();
+        int width = bm.getWidth();
+        float newWidth = cellSize * size;
+        float newHeight = cellSize;
+        matrix.postScale(newWidth / width, newHeight / height);
+        Bitmap newBm = Bitmap.createBitmap(bm, 0, 0, width, height, matrix, true);
+        return new BitmapDrawable(newBm);
     }
 
     public void setX(int x) {
@@ -144,44 +177,5 @@ public class Ship {
 
     public boolean isShipHorizontal() {
         return this.placedHorizontal;
-    }
-
-    public BitmapDrawable shipBitmap(ShipType type) {
-        switch(type) {
-            case TwoCellShip:
-            default:
-                return new BitmapDrawable(
-                        BitmapFactory.decodeResource(context.getResources(), R.drawable.ship));
-        }
-    }
-
-    public BitmapDrawable rotateBitmap(BitmapDrawable bitmap) {
-        Matrix matrix = new Matrix();
-        Bitmap originalBitmap = bitmap.getBitmap();
-        int width = originalBitmap.getWidth();
-        int height = originalBitmap.getHeight();
-        matrix.postRotate(90);
-        Bitmap rotatedBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, width, height, matrix, true);
-        return new BitmapDrawable(rotatedBitmap);
-    }
-
-    private BitmapDrawable attachBitmapToBoard(BitmapDrawable bitmap) {
-        Bitmap originalBitmap = bitmap.getBitmap();
-        Matrix matrix = new Matrix();
-        int height = originalBitmap.getHeight();
-        int width = originalBitmap.getWidth();
-        float newWidth = cellSize * size;
-        float newHeight = cellSize;
-        matrix.postScale(newWidth / width, newHeight / height);
-        Bitmap newBitmap = Bitmap.createBitmap(originalBitmap, 0, 0, width, height, matrix, true);
-        return new BitmapDrawable(newBitmap);
-    }
-
-    private Object valueByOrientation(Object horizontal, Object vertical) {
-        if(orientation == Orientation.HORIZONTAL) {
-            return horizontal;
-        } else {
-            return vertical;
-        }
     }
 }
