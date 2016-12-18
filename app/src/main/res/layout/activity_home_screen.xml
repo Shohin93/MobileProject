@@ -12,41 +12,25 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Continue Previous Game"
-        android:id="@+id/previousGame"
-        android:layout_marginTop="200dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="16dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Game"
+        android:text="Start a Game"
         android:id="@+id/newGame"
-        android:layout_below="@+id/previousGame"
-        android:layout_centerHorizontal="true"
-        android:textSize="16dp"
-        android:onClick="newGame"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Settings"
-        android:id="@+id/settings"
-        android:layout_below="@+id/newGame"
-        android:layout_centerHorizontal="true"
-        android:textSize="16dp" />
+        android:textSize="30dp"
+        android:onClick="newGame"
+        android:layout_marginBottom="61dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Exit game"
         android:id="@+id/exitGame"
-        android:layout_marginBottom="57dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="16dp" />
+        android:textSize="30dp"
+        android:onClick="exitGame"
+        android:layout_below="@+id/newGame"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -57,5 +41,5 @@
         android:layout_marginTop="65dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="46dp" />
+        android:textSize="50dp" />
 </RelativeLayout>

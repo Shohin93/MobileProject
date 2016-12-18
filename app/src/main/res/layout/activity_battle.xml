@@ -24,8 +24,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="My Hits:"
-        android:id="@+id/myHitsText"
+        android:text="My Hits: "
+        android:id="@+id/textView1"
         android:layout_below="@+id/battleTitle"
         android:layout_alignParentStart="true"
         android:layout_marginTop="41dp"
@@ -37,17 +37,17 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/myHits"
-        android:layout_alignBottom="@+id/myHitsText"
-        android:layout_toEndOf="@+id/myHitsText"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_toEndOf="@+id/textView1"
         android:textSize="30dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="AI hits:"
-        android:id="@+id/aiHitsText"
-        android:layout_below="@+id/myHitsText"
+        android:text="AI hits: "
+        android:id="@+id/textView2"
+        android:layout_below="@+id/textView1"
         android:layout_alignParentStart="true"
         android:layout_marginBottom="0dp"
         android:textSize="30dp" />
@@ -57,8 +57,8 @@
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:id="@+id/aiHits"
-        android:layout_alignBottom="@+id/aiHitsText"
-        android:layout_toEndOf="@+id/aiHitsText"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toEndOf="@+id/textView2"
         android:textSize="30dp"
         android:layout_marginBottom="90dp" />
 
@@ -70,9 +70,40 @@
         android:layout_centerHorizontal="true"
         android:clickable="true"
         android:id="@+id/tableLayout"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="60dp"
         android:layout_marginRight="0dp"
         android:layout_marginBottom="0dp">
     </TableLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text=""
+        android:id="@+id/placeBomb"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/userHitsText"
+        android:layout_alignBottom="@+id/myHits"
+        android:layout_toEndOf="@+id/myHits"
+        android:textSize="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="0"
+        android:id="@+id/aiHitsText"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toEndOf="@+id/aiHits"
+        android:textSize="30dp" />
 
 </RelativeLayout>

@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class HomeScreen extends AppCompatActivity {
     TextView titleText;
-    Button previousGame, newGame, settings, exitGame;
+    Button newGame,exitGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,18 +25,19 @@ public class HomeScreen extends AppCompatActivity {
         titleText.setTypeface(customFont);
 
         // Assign and change the fonts of the buttons
-        previousGame = (Button) findViewById(R.id.previousGame);
         newGame = (Button) findViewById(R.id.newGame);
-        settings = (Button) findViewById(R.id.settings);
         exitGame = (Button) findViewById(R.id.exitGame);
-        previousGame.setTypeface(customFont);
         newGame.setTypeface(customFont);
-        settings.setTypeface(customFont);
         exitGame.setTypeface(customFont);
     }
 
     public void newGame(View view) {
         Intent intent = new Intent(this, NewGame.class);
         startActivity(intent);
+        finish();
+    }
+
+    public void exitGame(View view) {
+        System.exit(0);
     }
 }
